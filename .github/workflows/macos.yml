@@ -4,6 +4,7 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
+      - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - run: brew install ninja
       - run: brew install onnxruntime
       - uses: actions/checkout@v4
