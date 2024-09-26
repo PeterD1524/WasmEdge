@@ -4,6 +4,8 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
+      - run: pkgconf --help
+      - run: false
       - run: c++ -v
       - run: brew install ninja
       - run: brew install llvm
