@@ -8,7 +8,8 @@ jobs:
       - run: brew install ninja
       - run: brew install llvm
       - run: brew install onnxruntime
-      - run: ldconfig
+      - run: clang++ -stdlib=libc++ -std=c++17 main.cc -lonnxruntime
+      - run: false
       - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
