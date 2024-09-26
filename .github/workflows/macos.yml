@@ -4,7 +4,7 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
-      - run: pkgconf --help
+      - run: pkg-config --help
       - run: false
       - run: c++ -v
       - run: brew install ninja
