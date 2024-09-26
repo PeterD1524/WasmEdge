@@ -5,6 +5,8 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: c++ -v
+      - run: ls -lR /opt/homebrew/include/onnxruntime
+      - run: false
       - run: brew install ninja
       - run: brew install llvm
       - run: brew install onnxruntime
