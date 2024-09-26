@@ -6,13 +6,13 @@ jobs:
     steps:
       - run: c++ -v
       - run: brew install ninja
-      # - run: brew install llvm
-      # - run: brew install onnxruntime
+      - run: brew install llvm
+      - run: brew install onnxruntime
       - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
-          repository: rhasspy/piper
-          # repository: WasmEdge/WasmEdge
+          # repository: rhasspy/piper
+          repository: WasmEdge/WasmEdge
       - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
       # - run: echo -n '1.2.0' > 'VERSION'
       # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'CMAKE_BUILD_TYPE=Release'
