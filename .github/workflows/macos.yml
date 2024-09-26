@@ -15,6 +15,6 @@ jobs:
           # repository: WasmEdge/WasmEdge
       # - run: cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
       - run: echo -n '1.2.0' > 'VERSION'
-      - run: cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'CMAKE_BUILD_TYPE=Release'
-      - run: cmake --build 'build'
+      - run: CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'CMAKE_BUILD_TYPE=Release'
+      - run: CFLAGS='-v' CXXFLAGS='-v' cmake --build 'build'
       - run: ctest --test-dir build
