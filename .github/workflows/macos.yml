@@ -4,12 +4,12 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
-      - run: pkg-config --libs --cflags libonnxruntime
-      - run: false
       - run: c++ -v
       - run: brew install ninja
       - run: brew install llvm
       - run: brew install onnxruntime
+      - run: pkg-config --libs --cflags libonnxruntime
+      - run: false
       - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
