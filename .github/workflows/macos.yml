@@ -4,9 +4,10 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
-      - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - run: brew install ninja
+      - run: brew install llvm
       - run: brew install onnxruntime
+      - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           repository: WasmEdge/WasmEdge
