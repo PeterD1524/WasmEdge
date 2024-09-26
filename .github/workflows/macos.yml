@@ -4,7 +4,7 @@ jobs:
   hi:
     runs-on: macos-latest
     steps:
-      - run: type c++
+      - run: c++ -v
       - run: brew install ninja
       # - run: brew install llvm
       # - run: brew install onnxruntime
