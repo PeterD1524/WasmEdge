@@ -5,20 +5,21 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: c++ -v
-      - run: brew install ninja
-      - run: brew install llvm
-      - run: brew install onnxruntime
-      - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
+      - run: cat /Applications/Xcode_15.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.5.sdk/usr/include/c++/v1/cstddef
+      # - run: brew install ninja
+      # - run: brew install llvm
+      # - run: brew install onnxruntime
+      # - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
+      # # - uses: actions/checkout@v4
+      # #   with:
+      # #     repository: WasmEdge/WasmEdge
+      # # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
+      # # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake --build 'build'
+      # # - run: ctest --test-dir build
       # - uses: actions/checkout@v4
       #   with:
-      #     repository: WasmEdge/WasmEdge
+      #     repository: rhasspy/piper
       # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
+      # - run: echo -n '1.2.0' > 'VERSION'
+      # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'CMAKE_BUILD_TYPE=Release'
       # - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake --build 'build'
-      # - run: ctest --test-dir build
-      - uses: actions/checkout@v4
-        with:
-          repository: rhasspy/piper
-      - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
-      - run: echo -n '1.2.0' > 'VERSION'
-      - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'CMAKE_BUILD_TYPE=Release'
-      - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake --build 'build'
