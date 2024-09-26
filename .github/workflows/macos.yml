@@ -8,14 +8,12 @@ jobs:
       - run: brew install ninja
       - run: brew install llvm
       - run: brew install onnxruntime
-      - run: pkg-config --libs --cflags libonnxruntime
-      - run: false
       - run: echo "LLVM_DIR=$(brew --prefix)/opt/llvm/lib/cmake" >> "$GITHUB_ENV"
       - uses: actions/checkout@v4
         with:
           repository: PeterD1524/WasmEdge
           # ref: 068ef5a00c48639b
-      - run: clang++ -stdlib=libc++ -std=c++17 main.cc -lonnxruntime
+      - run: clang++ -stdlib=libc++ -std=c++17 main.cc $(pkg-config --libs --cflags libonnxruntime)
       - run: false
       - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake -B 'build' -G 'Ninja' -D 'CMAKE_EXPORT_COMPILE_COMMANDS=ON' -D 'WASMEDGE_PLUGIN_WASI_NN_BACKEND=PIPER' -D 'WASMEDGE_BUILD_TESTS=ON' -D 'CMAKE_BUILD_TYPE=Release'
       - run: VERBOSE=1 CFLAGS='-v' CXXFLAGS='-v' cmake --build 'build'
