@@ -5,6 +5,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - run: brew install ninja
+      - run: brew install onnxruntime
       - uses: actions/checkout@v4
         with:
           repository: WasmEdge/WasmEdge
