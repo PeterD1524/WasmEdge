@@ -2587,6 +2587,7 @@ TEST(WasiNNTest, PiperBackend) {
     EXPECT_GE(BytesWritten, 30000);
     // Should output less than 40000 bytes.
     EXPECT_LT(BytesWritten, 40000);
+    EXPECT_EQ(BytesWritten, 34048);
   }
 }
 #endif // WASMEDGE_PLUGIN_WASI_NN_BACKEND_PIPER
