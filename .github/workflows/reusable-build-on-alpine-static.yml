@@ -8,6 +8,13 @@ on:
         required: true
       release:
         type: boolean
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+      release:
+        type: boolean
         
 permissions:
       contents: read
